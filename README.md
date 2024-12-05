@@ -30,4 +30,4 @@ Subscriber Architecture:
 ## Architecture
 
 ### Architecture 1 (Stand: 05.12.):
-![image]()
+![image]("Deployment Diagram ROS.png")
