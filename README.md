@@ -1,6 +1,5 @@
 # Project 3: Learning the inverse kinematics
 ## Short Description
-## --------------------------------------------------------------------------------- ## 
 
 Problem-Beschreibung:
 
@@ -29,6 +28,6 @@ Subscriber Architecture:
 	• The subscriber listens to this topic, retrieves the TCP position, and pairs it with the joint angles.
 
 ## Architecture
-## --------------------------------------------------------------------------------- ## 
-### Architecture 1:
+
+### Architecture 1 (Stand: 05.12.):
 ![image]()
