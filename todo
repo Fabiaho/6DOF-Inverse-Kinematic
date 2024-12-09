@@ -1,9 +1,10 @@
 # Todos
 - Tutorial durcharbeiten.
 - TCP festlegen (ansauger welche es halt gibt)
-- gazebo environment set up
-- shell script which will set up the UR5 (maybe this will be managed by dependencies???)
-- makefile 
+- Set upcontrollers in ROS
+- Gazebo environment set up
+- Shell script which will set up the UR5 (maybe this will be managed by dependencies???)
+- Makefile schreiben 
 
 # Notes:
 - Tutorial: https://roboticscasual.com/tutorial-controlling-tcp-position-of-the-ur5-robot-with-kdl-in-c-inverse-kinematics/
