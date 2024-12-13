@@ -6,5 +6,11 @@
 - Shell script which will set up the UR5 (maybe this will be managed by dependencies???)
 - Makefile schreiben 
 
-# Notes:
+# Notes/Sources:
 - Tutorial: https://roboticscasual.com/tutorial-controlling-tcp-position-of-the-ur5-robot-with-kdl-in-c-inverse-kinematics/
+- Inverse Kinematics with UR5: https://github.com/mcarfagno/robot_arm_pick_and_place/blob/master/jupiter_notebooks/InverseKinematicsUR5.ipynb
+  - YT Video: https://www.youtube.com/watch?v=O0aZ0XFEYbU
+  - YT Video: https://www.youtube.com/watch?v=DzKHEtwAOLU | https://github.com/caiobarrosv/ur5_isaac_simulation
+- Source: https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/
+- Python Universal Robot Kinematics: https://github.com/mc-capolei/python-Universal-robot-kinematics/tree/master
+- UR IKFast Library: https://github.com/cambel/ur_ikfast

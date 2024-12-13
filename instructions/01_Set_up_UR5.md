@@ -17,8 +17,3 @@
     - (please make sure your X Server is running with the required Xlaunch config.)
     - roslaunch ur_gazebo ur5_bringup.launch (This will start your gazebo setup)
     - roslaunch ur5_moveit_config demo.launch (This will start your demo moveit demo)
-
-
-
-
-

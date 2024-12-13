@@ -1,0 +1,4 @@
+- Logs are under hidden folder: /home/fhtw_user/.ros
+- Open multiple terminals inside of the docker: 
+    - docker exec -it fhtw_ros bash
+    - source /opt/ros/noetic/setup.bash
