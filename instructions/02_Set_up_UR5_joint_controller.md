@@ -1,5 +1,5 @@
-Please Read this for details: https://roboticscasual.com/ros-tutorial-control-the-ur5-robot-with-ros_control-tuning-a-pid-controller/
-
+Tutorial: https://roboticscasual.com/ros-tutorial-control-the-ur5-robot-with-ros_control-tuning-a-pid-controller/
+    - (Please read this for details)
 
 # This are the commands for setting up the UR5 Joint Controller in Ros
 - Start Docker container (run_docker_from_hub.bat) 
@@ -19,15 +19,20 @@ Please Read this for details: https://roboticscasual.com/ros-tutorial-control-th
     ##### Add Ros controllers
     - sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers
     ##### Launching the UR5 in Gazebo with ros_control
-    - roslaunch gazebo_ros empty_world.launch
+    - roslaunch gazebo_ros empty_world.launch (empty world)
+    ##### Launching the controller
+    - open a new terminal see Tips.md
+    - xclock  (wich is the diplay url - Test if works from this terminal)
+        - If not:      
+            - export DISPLAY=<Eternet/Eternet IP4 Adress>:0 (Portforwarding this Terminal to XServer/Gazebo etc.)   
+    - rosrun gazebo_ros spawn_model -file `rospack find ur5-joint-position-control`/urdf/ur5_jnt_pos_ctrl.urdf -urdf -x 0 -y 0 -z 0.1 -model ur5 (will build an UR5 model)
+    - roslaunch ur5-joint-position-control ur5_joint_position_control.launch (will create an controller)
+    ##### Start rqt_gui
+    - open a new terminal see Tips.md
+    - xclock  (wich is the diplay url - Test if works from this terminal)
+        - If not:      
+            - export DISPLAY=<Eternet/Eternet IP4 Adress>:0 (Portforwarding this Terminal to XServer/Gazebo etc.)   
+    - rosrun rqt_gui rqt_gui
+    - Empty widows pops up - for managing the UR5 
+        - From here you can play around by pushing data via topics like they do in the tutorial above
 
-    - rosrun gazebo_ros spawn_model -file `rospack find ur5-joint-position-control`/urdf/ur5_jnt_pos_ctrl.urdf -urdf -x 0 -y 0 -z 0.1 -model ur5
-    - roslaunch ur5-joint-position-control ur5_joint_position_control.launch
-
-
-
-    
-    ##### Run UR5 with moveit with gazebo simualtion
-    - (please make sure your X Server is running with the required Xlaunch config.)
-    - roslaunch ur_gazebo ur5_bringup.launch (This will start your gazebo setup)
-    - roslaunch ur5_moveit_config demo.launch (This will start your demo moveit demo)

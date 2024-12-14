@@ -7,6 +7,7 @@
 - Makefile schreiben 
 
 # Notes/Sources:
+- Tutorial series: https://roboticscasual.com/robotics-tutorials/
 - Tutorial: https://roboticscasual.com/tutorial-controlling-tcp-position-of-the-ur5-robot-with-kdl-in-c-inverse-kinematics/
 - Inverse Kinematics with UR5: https://github.com/mcarfagno/robot_arm_pick_and_place/blob/master/jupiter_notebooks/InverseKinematicsUR5.ipynb
   - YT Video: https://www.youtube.com/watch?v=O0aZ0XFEYbU
