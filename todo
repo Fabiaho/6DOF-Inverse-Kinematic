@@ -1,10 +1,16 @@
 # Todos
 - Tutorial durcharbeiten.
-- TCP festlegen (ansauger welche es halt gibt)
-- Set upcontrollers in ROS
-- Gazebo environment set up
 - Shell script which will set up the UR5 (maybe this will be managed by dependencies???)
 - Makefile schreiben 
+
+# Notes:
+- For IK there are two approaches - The analytical and the numeric way
+  - We have to go with the numeric way because:
+    - In the numeric method, we try to move the joint configuration (angles) step by step to approach the desired goal position for our tcp. Therefore, we try to reduce an error function. In our case, we want to minimize the error between our current tcp pose and the desired tcp pose.
+    - We can reduce this error using an ML/Dl methode
+
+
+
 
 # Notes/Sources:
 - Tutorial series: https://roboticscasual.com/robotics-tutorials/
@@ -15,3 +21,6 @@
 - Source: https://roboticseabass.com/2024/06/30/how-do-robot-manipulators-move/
 - Python Universal Robot Kinematics: https://github.com/mc-capolei/python-Universal-robot-kinematics/tree/master
 - UR IKFast Library: https://github.com/cambel/ur_ikfast
+
+# Inverse kinematics Deeplearning solution:
+- Reinforcement Learning: https://www.nature.com/articles/s41598-024-62948-6
