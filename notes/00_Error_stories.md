@@ -11,3 +11,9 @@
     - sudo apt-get install -y x11-apps
     - xclock (optional einfach testen ob die xclock angezeigt wird)
     - export DISPLAY=<IP>:0 (einfach mit ipconfig deine IPV4 Addresse rein)
+
+
+- Exit code 127 : env: ‘python\r’: No such file or directory - liegt daran wenn python files in windows geschrieben und dann in ubunt ausgeführt werden 
+    - Zeilen umbruch muss LF sein!! (einfach in VS code umstellen oder)
+        - sudo apt-get install dos2unix
+        - dos2unix /home/fhtw_user/catkin_ws/src/fhtw/data_generator/scripts/generator_node.py

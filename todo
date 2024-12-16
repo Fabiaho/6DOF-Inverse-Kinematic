@@ -1,7 +1,7 @@
 # Todos
-- Tutorial durcharbeiten.
 - Shell script which will set up the UR5 (maybe this will be managed by dependencies???)
 - Makefile schreiben 
+- 
 
 # Notes:
 - For IK there are two approaches - The analytical and the numeric way

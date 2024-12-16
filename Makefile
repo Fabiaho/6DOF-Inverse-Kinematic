@@ -9,3 +9,6 @@ PONY run ros
 
 PONY deploy.
 ----> Soll dann immer den src nach ros depoyen
+
+PONY LF
+----> Soll alle files zu LF von CRLF ändern (Wenn unter windows geschrieben)
