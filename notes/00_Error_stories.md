@@ -14,7 +14,7 @@ xclock #(optional einfach testen ob die xclock angezeigt wird)
 export DISPLAY=<IP>:0 #(einfach mit ipconfig deine IPV4 Addresse rein)
 ```
 
-- Exit code 127 : env: ‘python\r’: No such file or directory - liegt daran wenn python files in windows geschrieben und dann in ubunt ausgeführt werden 
+- Exit code 127 : env: ‘python\r’: No such file or directory - liegt daran wenn python files in windows geschrieben und dann in ubunt ausgeführt werden
 - Zeilen umbruch muss LF sein!! (einfach in VS code umstellen oder)
 
 ```bash

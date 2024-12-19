@@ -4,7 +4,7 @@
 
 Problem-Beschreibung:
 
-Forward Kinematics (FK): Calculating the position and orientation of the robot's Tool Center Point (TCP) given joint angles. 
+Forward Kinematics (FK): Calculating the position and orientation of the robot's Tool Center Point (TCP) given joint angles.
 Inverse Kinematics (IK): Finding the joint angles for a robot arm to achieve a specific TCP pose.
 
 Using Machine Learning for IK: Instead of Maths ==> the model learns the relationship between TCP poses and joint angles from data
@@ -20,7 +20,7 @@ How can Data Gathering be done ?
 
 - We cannot simply take random positions as every robot as a specific range of movement (=certain degrees of freedom)
 - We do still need to generate random joint positions which need to be restricted based on the robot models actual limits
-- After each new joint => send them to robot => robot triggers a new tcp pos and this is then collected 
+- After each new joint => send them to robot => robot triggers a new tcp pos and this is then collected
 
 Subscriber Architecture:
 
