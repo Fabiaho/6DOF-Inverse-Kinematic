@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>inverse_kinematics_node</name>
+  <version>0.0.1</version>
+  <description>Inverse Kinematics ROS Node using PyTorch model</description>
+
+  <maintainer email="chiarababiak@todo.todo">Chiara Babiak</maintainer>
+
+  <license>BSD</license>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>python3</exec_depend>
+  <exec_depend>torch</exec_depend>  <!-- Add PyTorch as a dependency -->
+  <exec_depend>requests</exec_depend>
+
+  <!-- Build dependencies if any -->
+  <build_depend>python3-catkin-pkg</build_depend>
+</package>
