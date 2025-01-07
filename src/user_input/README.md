@@ -41,7 +41,7 @@ user_input/model/best_model.pt
 
 If all the above steps are successful, proceed to run the node.
 
-# Running the Node
+# Run and Use 
 
 After all the Prerequs. are installed and set up run the following commands in the terminal:
 ```bash
@@ -56,31 +56,17 @@ source devel/setup.bash
 rosrun user_input user_input.py
 ```
 
-2. Open two additional terminals for publishing and listening to topics:
 
-- Terminal 1: For publishing desired TCP poses.
-- Terminal 2: For listening to the calculated joint positions.
-
-3. Listening: Output of Calculated Join Positions
-
-    The node will process the input and publish the calculated joint positions on the /calculated_joint_positions topic. The output will be a flat list of 6 joint angle values in radians.
+2. Publishing Poses
     
-    ```bash
-    rostopic echo /calculated_joint_positions
-   ```
-    
+   The user can choose between publishing TCP Poses with or without Orientation.
+   Formats:
 
-4. Publishing Poses
-    
-    To send a desired TCP pose to the node, use the following example command:
-    ```bash
-    rostopic pub /desired_tcp_pose std_msgs/Float64MultiArray "data: [0.5, 0.3, 0.2, 0.0, 1.57, 0.0]"
-    ```
-   
-    - Input Format:
-        - The input message must contain 6 values:
-          - Position (X, Y, Z): Cartesian coordinates of the tool center point.
-          - Orientation (roll, pitch, yaw): Orientation of the tool in radians.
+    - TCP Pose: 0.3, 0.1, 0.5
+    - Orientation (roll, pitch, yaw) : 0.0, 1.57, 0.0 
+      If you do not wish to proceed with Orientation then press "Enter" 
+
+   The Node is publishing onto the same Topic as set in pose_listener_node, therefore make sure this node is running!
 
 
 ## File Structure
