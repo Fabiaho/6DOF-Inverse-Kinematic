@@ -190,10 +190,10 @@ if __name__ == '__main__':
                         default="assets/digit/urdf/digit_r_arm.urdf",
                         help='URDF chain path')
     parser.add_argument('--train-data-path', type=str,
-                        default="data/digit/train_20000.hdf5",
+                        default="data/ur5/ur5_train_data.csv",
                         help='Training data path')
     parser.add_argument('--test-data-path', type=str,
-                        default='data/digit/val_1000.hdf5',
+                        default='data/ur5/ur5_test_data.csv',
                         help='Test data path')
     parser.add_argument('--num-joints', type=int, default=6,
                         help='Number of UR5 joints you want to predict')

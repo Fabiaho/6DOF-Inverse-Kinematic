@@ -143,8 +143,8 @@ def create_exp_dir(cfg):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--chain-path', type=str, default="assets/digit/urdf/digit_r_arm.urdf", help='urdf chain path')
-    parser.add_argument('--train-data-path', type=str, default="data/digit/train_20000.hdf5", help='urdf chain path')
-    parser.add_argument('--test-data-path', type=str, default='data/digit/val_1000.hdf5', help='urdf chain path')
+    parser.add_argument('--train-data-path', type=str, default="data/ur5/ur5_train_data.csv", help='urdf chain path')
+    parser.add_argument('--test-data-path', type=str, default='data/ur5/ur5_test_data.csv', help='urdf chain path')
     parser.add_argument('--num-joints', type=int, default=4, help='number of joints of the kinematic chain')
 
 # lowered num epochs to 200 (from 100.000)
@@ -172,8 +172,8 @@ if __name__ == '__main__':
 
     cfg.jointnet_output_dim = cfg.num_gaussians * 2 + cfg.num_gaussians if cfg.num_gaussians != 1 else 2
 
-    # train(cfg)
-    print(type(cfg))
+    train(cfg)
+    # print(type(cfg))
 
 
 
