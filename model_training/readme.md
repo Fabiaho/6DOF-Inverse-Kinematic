@@ -1,6 +1,6 @@
 
 
-# README: Model Usage and Training Instructions
+# Model Usage and Training Instructions
 
 ## Model Download Links
 
