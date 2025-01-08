@@ -39,4 +39,12 @@ rosrun gazebo_ros spawn_model -file `rospack find ur5-joint-position-control`/ur
 roslaunch ur5-joint-position-control ur5_joint_position_control.launch # in window 3
 rosrun pose_listener pose_listener_node # in window 4
 rosrun ur5-tcp-position-generator  tcp_position_generator # in window 5
+# user input node => all below in window 6 
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install ikpy
+catkin_make
+source devel/setup.bash
+rosrun user_input user_input.py
+
+
 
