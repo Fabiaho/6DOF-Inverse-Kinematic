@@ -102,22 +102,20 @@ class MainNet(nn.Module):
         self.num_gaussians = cfg.num_gaussians
         self.joint_template = JointNetTemplate(cfg)
 
-
     def forward(self, x, weights):
         out = []
         x = x.unsqueeze(2)
-        for i in range(x.shape[1]-1):
-            out.append(self.joint_template(x[:, :i + 1].squeeze(2), weights[4*i :4*i + 4]))
+        for i in range(x.shape[1] - 1):
+            out.append(self.joint_template(x[:, :i + 1].squeeze(2), weights[4 * i:4 * i + 4]))
         selection = []
-
         distributions = []
         for i in range(len(out)):
             if self.num_gaussians == 1:
-                selection_weights = torch.ones(x.shape[0], 1)
+                selection_weights = torch.ones(x.shape[0], 1, device=x.device)
             else:
-                selection_weights = Sparsemax().forward(out[i][:, self.num_gaussians * 2 :])
+                selection_weights = Sparsemax()(out[i][:, self.num_gaussians * 2:])
             selection.append(selection_weights)
-            mix = D.Categorical(selection_weights.cuda())
+            mix = D.Categorical(selection_weights.to(x.device))  # Use x.device
             comp = D.Independent(D.Normal(
                 out[i][:, :self.num_gaussians].unsqueeze(2),
                 out[i][:, self.num_gaussians:self.num_gaussians * 2].unsqueeze(2).exp() + 1e-7,), 1)
@@ -129,30 +127,25 @@ class MainNet(nn.Module):
         samples, distributions = [], []
         means = []
         variances = []
-        selection= []
-
+        selection = []
         curr_input = x[:, 0].unsqueeze(1)
         for i in range(self.num_joints):
-            out = self.joint_template(curr_input, weights[4*i: 4*i + 4])
+            out = self.joint_template(curr_input, weights[4 * i: 4 * i + 4])
             if self.num_gaussians == 1:
-                selection_weights = torch.ones(x.shape[0], 1)
+                selection_weights = torch.ones(x.shape[0], 1, device=x.device)
             else:
-                #selection_weights = torch.softmax(out[:, self.num_gaussians * 2:], dim=1)
-                selection_weights = Sparsemax().forward(out[:, self.num_gaussians*2 :])
-
-            mix = D.Categorical(selection_weights.cuda())
+                selection_weights = Sparsemax()(out[:, self.num_gaussians * 2:])
+            mix = D.Categorical(selection_weights.to(x.device))
             comp = D.Independent(D.Normal(
                 out[:, :self.num_gaussians].unsqueeze(2),
-                out[:, self.num_gaussians:self.num_gaussians * 2].unsqueeze(2).exp() + 1e-7, ), 1)
-
+                out[:, self.num_gaussians:self.num_gaussians * 2].unsqueeze(2).exp() + 1e-7,), 1)
             means.append(out[:, :self.num_gaussians].unsqueeze(2))
             variances.append(out[:, self.num_gaussians:self.num_gaussians * 2].unsqueeze(2).exp())
             selection.append(selection_weights)
-
             dist = MixtureSameFamily(mix, comp)
             sample = dist.sample()
             sample = sample.clip(lower[i], upper[i])
-            curr_input = torch.cat((curr_input,sample), dim = 1)
+            curr_input = torch.cat((curr_input, sample), dim=1)
             samples.append(sample)
             distributions.append(dist)
         return samples, distributions, means, variances, selection
