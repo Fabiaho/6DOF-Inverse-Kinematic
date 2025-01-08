@@ -17,7 +17,7 @@ python3 -c "import torch; print(torch.__version__)"
 ```
 If PyTorch is not installed, install it using the following command:
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install torchvision torchaudio --index-url https://download.pytorch.org/whl/cuda
 ```
 
 #### Further Libraries
@@ -34,10 +34,12 @@ python3 -c "import user_input.modules.modules as mod; print(mod)"
 ```
 
 #### Download the Pre-trained Model
-The .pt file for the pre-trained model must be downloaded from the following source: https://huggingface.co/hange/inverseKinematicsSmall/tree/main
+The .pt file for the pre-trained model must be downloaded from the following source: 
 
-Save the best_model.pt file in the following directory within your package:
-user_input/model/best_model.pt
+- [https://huggingface.co/hange/inverseKinematicsSmall/tree/main](https://huggingface.co/hange/IK_no_orientation_best_model/tree/main)
+- https://huggingface.co/hange/IK8/tree/main
+
+Save the checkpoint files as below seen in the architecture of the node
 
 If all the above steps are successful, proceed to run the node.
 
@@ -77,10 +79,18 @@ user_input/
 │   ├── ur5_train_data.csv
 │   └── ur5_test_data.csv
 ├── model/
-│   └── best_model.pt
+│   └── orientation_model.pt
+│   └── no_orientation_model.pt
 ├── modules/
 │   ├── __init__.py
-│   └── modules.py
+│   └── orientation/
+│       └── init.py
+│       └── modules.py
+│       └── sparsemax.py.py
+│   └── without/
+│       └── init.py
+│       └── modules.py
+│       └── sparsemax_no.py.py
 ├── scripts/
 │   ├── __init__.py
 │   └── user_input.py

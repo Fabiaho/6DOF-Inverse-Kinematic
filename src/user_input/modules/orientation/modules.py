@@ -3,7 +3,7 @@ from torch import nn
 from torch import distributions as D
 import torch.nn.functional as F
 from torch.distributions.mixture_same_family import MixtureSameFamily
-from modules.sparsemax import Sparsemax  # Replace with nn.Softmax(dim=-1) if needed
+from modules.orientation.sparsemax import Sparsemax  # Replace with nn.Softmax(dim=-1) if needed
 
 
 ###############################################################################
