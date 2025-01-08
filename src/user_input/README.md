@@ -17,7 +17,7 @@ python3 -c "import torch; print(torch.__version__)"
 ```
 If PyTorch is not installed, install it using the following command:
 ```bash
-pip install torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install torchvision torchaudio --index-url https://download.pytorch.org/whl/cuda
 ```
 
 #### Further Libraries
