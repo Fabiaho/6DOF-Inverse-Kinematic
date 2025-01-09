@@ -31,6 +31,110 @@ Subscriber Architecture:
   - While the robot moves to the new pose, its TCP position is published on the /tcp_pose topic.
   - The subscriber listens to this topic, retrieves the TCP position, and pairs it with the joint angles.
 
+## How to use?
+
+### ROS Docker
+
+Start up the docker container.
+
+We experienced issues with copying commands into the docker container after it was freshly booted, so we recommend reconnecting once.
+
+If the container is running already you can connect to it via:
+
+```bash
+docker exec -it fhtw_ros bash
+source /opt/ros/noetic/setup.bash
+cd /home/fhtw_user/catkin_ws
+source devel/setup.bash
+tmux new-session
+source devel/setup.bash
+```
+
+### Copy source code into ROS
+
+The following code snippet needs to be executed outside of the ROS Container.
+
+```bash
+cp -r ./src/pose_listener/ ./Docker-ROS/catkin_ws/src
+cp -r ./src/ur5-tcp-position-generator/ ./Docker-ROS/catkin_ws/src
+cp -r ./src/user_input/ ./Docker-ROS/catkin_ws/src
+```
+
+### Setup
+
+```bash
+cd ~/catkin_ws/src/fhtw
+git clone https://github.com/ros-industrial/universal_robot.git -b noetic-devel
+git clone https://github.com/dairal/ur5-joint-position-control.git
+
+sudo apt-get update
+sudo apt-get install -y ros-noetic-tf-conversions ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-rqt ros-noetic-rqt-common-plugins x11-apps
+
+cd ~/catkin_ws
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+pip install ikpy
+
+catkin_make
+source devel/setup.bash
+```
+
+### Fix GUI Error
+
+If the container is running for some time, it can be the case that your IPv4 Adress is outdated and Windows cannot be shown to you.
+
+To fix that you need to update the environment variable in the docker image.
+
+Do this in every new tmux session.
+
+```bash
+source devel/setup.bash
+export DISPLAY=<IPv4>:0
+```
+
+### Start Project
+
+We recommend using tmux windows within the started session to better manage multiple terminals.
+
+#### Window 1 - roscore
+
+```bash
+roscore
+```
+
+#### Window 2 - Gazebo World
+
+```bash
+roslaunch gazebo_ros empty_world.launch
+```
+
+#### Window 3 - UR5 arm
+
+```bash
+rosrun gazebo_ros spawn_model -file `rospack find ur5-joint-position-control`/urdf/ur5_jnt_pos_ctrl.urdf -urdf -x 0 -y 0 -z 0.1 -model ur5
+roslaunch ur5-joint-position-control ur5_joint_position_control.launch
+```
+
+#### Window 4 - Pose Listener
+
+```bash
+rosrun pose_listener pose_listener_node
+```
+
+#### Window 5 - Position Generator
+
+```bash
+rosrun ur5-tcp-position-generator  tcp_position_generator
+```
+
+#### Window 6 - User Input Node
+
+```bash
+rosrun user_input user_input.py
+```
+
 ## Architecture
 
 ### Architecture 1 (Stand: 05.12.)
