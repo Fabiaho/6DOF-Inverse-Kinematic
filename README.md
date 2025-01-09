@@ -63,19 +63,28 @@ cp -r ./src/user_input/ ./Docker-ROS/catkin_ws/src
 ### Setup
 
 ```bash
-cd ~/catkin_ws/src/fhtw
+cd /home/fhtw_user/catkin_ws/src/fhtw
 git clone https://github.com/ros-industrial/universal_robot.git -b noetic-devel
 git clone https://github.com/dairal/ur5-joint-position-control.git
 
 sudo apt-get update
 sudo apt-get install -y ros-noetic-tf-conversions ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-rqt ros-noetic-rqt-common-plugins x11-apps
 
-cd ~/catkin_ws
+cd /home/fhtw_user/catkin_ws
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
 
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 pip install ikpy
+
+cd /home/fhtw_user/catkin_ws/src/fhtw/user_input
+mkdir model
+cd model
+wget -O orientation_model.pt https://huggingface.co/hange/IK8/resolve/main/best_model.pt
+wget -O no_orientation_model.pt https://huggingface.co/hange/IK_no_orientation_best_model/resolve/main/best_model.pt
+cd ..
+pip install -e .
+cd /home/fhtw_user/catkin_ws
 
 catkin_make
 source devel/setup.bash
