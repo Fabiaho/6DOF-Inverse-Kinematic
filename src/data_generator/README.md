@@ -1,1 +1,0 @@
-# ROS package for generating CSV files which can be used for training a ML model for IK

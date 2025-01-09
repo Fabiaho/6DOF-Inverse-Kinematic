@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="data_generator" type="generator_node.py" name="data_collector_node" output="screen">
-  </node>
-</launch>
