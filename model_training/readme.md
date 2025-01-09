@@ -43,3 +43,30 @@ Adjust the parameters as needed for your specific use case.
 
 - The `model_no_orientation` directory is incomplete for training and only contains files that differ from the full model with orientation (`model_training/`).  
 - Therefore exchange files for model training.
+
+## Results
+
+### Model Performance Summary
+
+#### Model (with Orientation)  
+- **Accuracy:** 52%  
+- **RMSE:** 0.637  
+- **Parameters:** ~33 Million  
+
+#### Model (without Orientation)  
+- **Accuracy:** 65%  
+- **RMSE:** 0.100  
+- **Parameters:** ~33 Million  
+
+### Training Details
+- **Training Duration:** Approximately 4–6 hours per train run (using RTX 3060 GPU)  
+- **Hyperparameter Tuning:**  
+  Multiple models were trained with varying hyperparameters, such as:  
+  - Number of epochs  
+  - Early stopping criteria  
+  - Batch size  
+  - Number of Gaussians  
+  - Embedding dimensions  
+  - Hidden size of the joint network  
+
+The best-performing models' configurations can be found on Hugging Face in the `run_args.json` file of the respective model.  
